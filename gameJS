@@ -1,0 +1,65 @@
+// выбор игрока с проверкой введенного значения
+function getChoice(uInput) {
+    uInput = uInput.toLowerCase();
+    if (uInput=='rock' || uInput == 'paper' || uInput == 'scissors' || uInput == 'bomb') {
+        return uInput;
+    } else {
+        return 'that is not even an option, you smart ass';
+    }
+};
+// выбор оппонента (рандом)
+function getCChoice() {
+    getCChoice = Math.floor(Math.random()*3);
+    switch (getCChoice) {
+        case 0:
+            return 'rock';
+            break;
+        case 1:
+            return 'scissors';
+            break;
+        case 2:
+            return 'paper';
+            break;
+    }
+}
+// определяем победителя
+function detWin(myChoice, compChoice) {
+    if (myChoice == compChoice) {
+        return 'it is a tie!';
+    }
+    if (myChoice == 'rock') {
+        if (compChoice == 'paper') {
+            return 'Computer won!';
+        } else {
+            return 'You won, buddy!';
+        }
+    }
+    if (myChoice == 'scissors') {
+        if (compChoice == 'rock') {
+            return 'Well, myabe next time.'
+        } else {
+            return 'Nnnice!'
+        }
+    }
+    if (myChoice == 'paper') {
+        if (compChoice == 'rock') {
+            return 'You are the winner!'
+        } else {
+            return 'You were cut into pieces!'
+        }
+    }
+    if (myChoice == 'bomb') {
+        return 'Well, you cheated,therefore you won, but...you cheated'
+    }
+    if (myChoice !== 'bomb' || myChoice !== 'rock' || myChoice !== 'paper' || myChoice !== 'scissors') {
+        return 'You are not smart, are you?';
+    }
+}
+// играем
+function playGame() {
+    let a = getChoice('BOMB');
+    let b = getCChoice();
+    console.log(`You threw: ${a}`)
+    console.log(`Comp threw: ${b}`)
+    console.log(detWin(a, b));
+}
